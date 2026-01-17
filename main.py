@@ -1,18 +1,19 @@
 import os
 os.system("cls")
+import json
 
-import random as rd
+# car = {
+#     "brand": "GM",
+#     "model": "Damas",
+#     "probeg": 2500,
+#     "rang": "Oq",
+#     "narx": 6500
+# }
 
-print(rd.randint(1, 100))
+# with open("myfile.txt", "w") as f:
+#     # f.write(car)
+#     json.dump(car, f, indent=4)
 
-print(rd.uniform(1, 10))
-
-names = ['Shamsiddin', "Muhammadsolih", "Rustambek", "Sohibjon", "Abdulloh", "Abdurahim"]
-
-# ism = rd.choice(names)
-# print(ism)
-
-# rd.shuffle(names)
-# print(names)
-
-# print(rd.sample(names, 3))
+with open("myfile.txt") as f:
+    car = json.load(f)
+    print(car)
