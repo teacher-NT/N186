@@ -1,63 +1,32 @@
 import os
 os.system("cls")
 
-class Car:
-    def __init__(self, b,m,r,n,y,s):
-        self.brand = b
-        self.model = m
-        self.ranglar = r
-        self.narx = n
-        self.yil = y
-        self.soni = s
-
-    def __str__(self):
-        return f"{self.brand} {self.model} {self.ranglar} {self.narx}. {self.soni}ta"
+class Person:
+    def __init__(self, i,f,y,m):
+        self.ism = i
+        self.familya = f
+        self.yosh = y
+        self.manzil = m
     
-    def __eq__(self, n):
-        return self.narx == n
+    def salomlash(self):
+        print(f"Assalom alekum, Men {self.ism}man")
 
-    def __ne__(self, n):
-        return self.narx != n
+class Employee:
+    def __init__(self, i,f,y,m,mo,l):
+        self.ism = i
+        self.familya = f
+        self.yosh = y
+        self.manzil = m
+        self.lavozim = l
+        self.maosh = mo
     
-    def __lt__(self, n):
-        return self.yil < n
-    
-    def __add__(self, n):
-        self.narx += n
+    def salomlash(self):
+        print(f"Assalom alekum, Men {self.ism} {self.familya}man. Lavozimim {self.lavozim}")
 
-    def __sub__(self, n):
-        self.narx -= n
-    
-    def __mul__(self, n):
-        self.soni *= n
-    
-    def __truediv__(self, n):
-        self.soni //= n
 
-    def __len__(self):
-        return  len(self.ranglar)
-    
-    def __contains__(self, n):
-        n = n.lower()
-        i = 0
-        while i < len(car1):
-            if self.ranglar[i].lower() == n:
-                return True
-            i += 1
-        return False
-        # if n in self.ranglar:
-        #     return True
-        # else:
-        #     return False
+person1 = Person("Abdulla", "Kadirov", 15, "Toshkent")
 
-    
+employee1 = Employee("Azizbek", "Jalilov", 24, "Namangan", 600, "Menejer")
 
-car1 = Car("GM", "Matiz", ['Oq', 'Qora', 'Qizil', 'YAshiL', "Ko'k"], 3000, 2022, 12)
-
-# print(len(car1))
-if "yashil" in car1:
-    print("Yes")
-else:
-    print("No")
-
-print(car1)        
+person1.salomlash()
+employee1.salomlash()
