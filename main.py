@@ -5,13 +5,13 @@ class Car:
     def __init__(self, b,m,r,n,y,s):
         self.brand = b
         self.model = m
-        self.rang = r
+        self.ranglar = r
         self.narx = n
         self.yil = y
         self.soni = s
 
     def __str__(self):
-        return f"{self.brand} {self.model} {self.rang} {self.narx}. {self.soni}ta"
+        return f"{self.brand} {self.model} {self.ranglar} {self.narx}. {self.soni}ta"
     
     def __eq__(self, n):
         return self.narx == n
@@ -34,9 +34,30 @@ class Car:
     def __truediv__(self, n):
         self.soni //= n
 
-car1 = Car("GM", "Matiz", "OQ", 3000, 2022, 12)
+    def __len__(self):
+        return  len(self.ranglar)
+    
+    def __contains__(self, n):
+        n = n.lower()
+        i = 0
+        while i < len(car1):
+            if self.ranglar[i].lower() == n:
+                return True
+            i += 1
+        return False
+        # if n in self.ranglar:
+        #     return True
+        # else:
+        #     return False
 
-# car1 * 2
-car1 / 3
+    
+
+car1 = Car("GM", "Matiz", ['Oq', 'Qora', 'Qizil', 'YAshiL', "Ko'k"], 3000, 2022, 12)
+
+# print(len(car1))
+if "yashil" in car1:
+    print("Yes")
+else:
+    print("No")
 
 print(car1)        
