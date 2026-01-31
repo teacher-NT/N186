@@ -11,6 +11,14 @@ class Person:
     def salomlash(self):
         print(f"Assalom alekum, Men {self.ism}man")
 
+    def __gt__(self, n):
+        if isinstance(n, int):
+            return self.yosh > n
+        elif isinstance(n, Employee):
+            return self.yosh > n.yosh
+        else:
+            return f"TypeError: {type(n)} mumkin emas."
+
 class Employee:
     def __init__(self, i,f,y,m,mo,l):
         self.ism = i
@@ -22,11 +30,21 @@ class Employee:
     
     def salomlash(self):
         print(f"Assalom alekum, Men {self.ism} {self.familya}man. Lavozimim {self.lavozim}")
+    
+    def __gt__(self, n):
+        return self.maosh > n
 
 
 person1 = Person("Abdulla", "Kadirov", 15, "Toshkent")
 
-employee1 = Employee("Azizbek", "Jalilov", 24, "Namangan", 600, "Menejer")
+employee1 = Employee("Azizbek", "Jalilov", 12, "Namangan", 600, "Menejer")
 
-person1.salomlash()
-employee1.salomlash()
+print(person1 > employee1)
+print(person1 > 18)
+print(person1 > 22.5)
+# print(employee1 > 300)
+
+
+
+# person1.salomlash()
+# employee1.salomlash()
