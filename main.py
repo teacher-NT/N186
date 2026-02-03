@@ -1,50 +1,33 @@
 import os
 os.system("cls")
 
-class Person:
-    def __init__(self, i,f,y,m):
-        self.ism = i
-        self.familya = f
-        self.yosh = y
-        self.manzil = m
-    
-    def salomlash(self):
-        print(f"Assalom alekum, Men {self.ism}man")
+from abc import ABC, abstractmethod
 
-    def __gt__(self, n):
-        if isinstance(n, int):
-            return self.yosh > n
-        elif isinstance(n, Employee):
-            return self.yosh > n.yosh
-        else:
-            return f"TypeError: {type(n)} mumkin emas."
+class Player(ABC):
+    @abstractmethod
+    def run(self):
+        pass
 
-class Employee:
-    def __init__(self, i,f,y,m,mo,l):
-        self.ism = i
-        self.familya = f
-        self.yosh = y
-        self.manzil = m
-        self.lavozim = l
-        self.maosh = mo
-    
-    def salomlash(self):
-        print(f"Assalom alekum, Men {self.ism} {self.familya}man. Lavozimim {self.lavozim}")
-    
-    def __gt__(self, n):
-        return self.maosh > n
+    @abstractmethod
+    def jump(self):
+        pass
+
+    @abstractmethod
+    def kick(self):
+        pass
 
 
-person1 = Person("Abdulla", "Kadirov", 15, "Toshkent")
+class General(Player):
+    def __init__(self, n,s):
+        self.nickname = n
+        self.s = s
+    def run(self):
+        print(f"{self.nickname} is running...")
 
-employee1 = Employee("Azizbek", "Jalilov", 12, "Namangan", 600, "Menejer")
+    def kick(self):
+        print(f"{self.nickname} is kicking...")
 
-print(person1 > employee1)
-print(person1 > 18)
-print(person1 > 22.5)
-# print(employee1 > 300)
-
-
-
-# person1.salomlash()
-# employee1.salomlash()
+    def jump(self):
+        print(f"{self.nickname} is jumping...")
+        
+general1 = General("Spiderman", 1000)
