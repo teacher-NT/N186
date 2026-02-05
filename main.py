@@ -3,7 +3,7 @@ os.system("cls")
 import random as rd
 from PyQt5.QtWidgets import ( 
     QApplication, QWidget, QLabel,
-    QPushButton
+    QPushButton, QLineEdit
 )
 
 btn_style = """
@@ -14,18 +14,12 @@ btn_style = """
     border: 2px solid red;
 """
 
-reset_style = """
-    background-color:red;
-    color:black;
-    font-size:20px;
-    border-radius:20px;
-    border: 2px solid blue;
+input_style = """
+    background-color: white;
+    font-size: 20px;
+    border: 3px solid black;
 """
 
-count_style = """
-    font-size:60px;
-    color: black;
-"""
 
 app = QApplication([])
 
@@ -39,37 +33,44 @@ label1.setText("Qani boshladik")
 label1.move(100, 20)
 label1.setStyleSheet("font-size:30px; color:#ffffff;")
 
-count_label = QLabel(oyna)
-count_label.setText("0")
-count_label.move(180,100)
-count_label.setFixedWidth(100)
-count_label.setStyleSheet(count_style)
+inpt = QLineEdit(oyna)
+inpt.setGeometry(50,100, 300, 50)
+inpt.setStyleSheet(input_style)
+inpt.setPlaceholderText("Davlat nomini kiriting...")
 
-count = 0
+label2 = QLabel(oyna)
+label2.setFixedWidth(150)
+label2.move(80, 180)
+label2.setStyleSheet("font-size:30px; color:#ffffff;")
+
 def func_btn1():
-    global count
-    count += 1
-    # colors = ["red", "green", "blue", "yellow", "white", "purple"]
-    # color = rd.choice(colors)
-    # oyna.setStyleSheet(f"background-color:{color};")
-    count_label.setText(str(count))
+    capitals = {
+        "O'zbekiston": "Toshkent",
+        "Rossiya": "Moskva",
+        "Qozog'iston": "Astana",
+        "Angliya":"London",
+        "Ispaniya": "Madrid",
+        "Italiya": "Rim",
+        "Germaniya": "Berlin",
+        "Fransiya": "Parij",
+        "Turkiya": "Anqara",
+        "Misr": "Qohira",
+        "Yaponiya": "Tokio"
+    }
+    text = inpt.text()
+    if text in capitals:
+        n = capitals[text]
+        label2.setText(n)
+    else:
+        print("Ma'lumot topilmadi🤔")
 
+    
 btn1 = QPushButton(oyna)
-btn1.setText("Count")
+btn1.setText("🔍Search")
 btn1.setStyleSheet(btn_style)
 btn1.setGeometry(115,325, 170, 50)
 btn1.clicked.connect(func_btn1)
 
-def reset_func():
-    global count
-    count = 0
-    count_label.setText(str(count))
-
-reset_btn = QPushButton(oyna)
-reset_btn.setText("Reset")
-reset_btn.setStyleSheet(reset_style)
-reset_btn.setGeometry(115,380, 170, 50)
-reset_btn.clicked.connect(reset_func)
 
 oyna.show()
 app.exec_()
