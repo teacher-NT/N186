@@ -25,38 +25,33 @@ class Window(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("My App")
-        self.setGeometry(1350,200,400,700)
+        self.setGeometry(1300,200,400,700)
         self.setStyleSheet("background-color:#303670;")
         self.vbox = QHBoxLayout()
         
 
-        self.btn1 = QPushButton()
-        self.btn1.setText("Tugma 1")
+        self.btn1 = QPushButton("Tugma 1")
         self.btn1.setStyleSheet(btn_style)
         self.vbox.addWidget(self.btn1)
         self.vbox.addSpacing(30)
 
 
-        self.btn2 = QPushButton()
-        self.btn2.setText("Tugma 2")
+        self.btn2 = QPushButton("Tugma 2")
         self.btn2.setStyleSheet(btn_style)
         self.vbox.addWidget(self.btn2)
         self.vbox.addSpacing(30)
 
-        self.btn3 = QPushButton()
-        self.btn3.setText("Tugma 3")
+        self.btn3 = QPushButton("Tugma 3")
         self.btn3.setStyleSheet(btn_style)
         self.vbox.addWidget(self.btn3)
         self.vbox.addSpacing(30)
 
-        self.btn4 = QPushButton()
-        self.btn4.setText("Tugma 4")
+        self.btn4 = QPushButton("Tugma 4")
         self.btn4.setStyleSheet(btn_style)
         self.vbox.addWidget(self.btn4)
         self.vbox.addSpacing(30)
 
-        self.btn5 = QPushButton()
-        self.btn5.setText("Tugma 5")
+        self.btn5 = QPushButton("Tugma 5")
         self.btn5.setStyleSheet(btn_style)
         self.vbox.addWidget(self.btn5)
         
