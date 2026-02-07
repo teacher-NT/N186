@@ -20,57 +20,116 @@ input_style = """
     border: 3px solid black;
 """
 
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Poytaxlarni topish")
+        self.setGeometry(1350,200,400,700)
+        self.setStyleSheet("background-color:#303670;")
+
+        self.label1 = QLabel(self)
+        self.label1.setText("Qani boshladik")
+        self.label1.move(100, 20)
+        self.label1.setStyleSheet("font-size:30px; color:#ffffff;")
+
+        self.inpt = QLineEdit(self)
+        self.inpt.setGeometry(50,100, 300, 50)
+        self.inpt.setStyleSheet(input_style)
+        self.inpt.setPlaceholderText("Davlat nomini kiriting...")
+
+        self.label2 = QLabel(self)
+        self.label2.setFixedWidth(150)
+        self.label2.move(80, 180)
+        self.label2.setStyleSheet("font-size:30px; color:#ffffff;")
+
+        self.btn1 = QPushButton(self)
+        self.btn1.setText("🔍Search")
+        self.btn1.setStyleSheet(btn_style)
+        self.btn1.setGeometry(115,325, 170, 50)
+        self.btn1.clicked.connect(self.func_btn1)
+
+    
+    def func_btn1(self):
+        capitals = {
+            "O'zbekiston": "Toshkent",
+            "Rossiya": "Moskva",
+            "Qozog'iston": "Astana",
+            "Angliya":"London",
+            "Ispaniya": "Madrid",
+            "Italiya": "Rim",
+            "Germaniya": "Berlin",
+            "Fransiya": "Parij",
+            "Turkiya": "Anqara",
+            "Misr": "Qohira",
+            "Yaponiya": "Tokio"
+        }
+        text = self.inpt.text()
+        if text in capitals:
+            n = capitals[text]
+            self.label2.setText(n)
+        else:
+            print("Ma'lumot topilmadi🤔")
+
+
 
 app = QApplication([])
 
-oyna = QWidget()
-oyna.setWindowTitle("Mening birinchi dasturim")
-oyna.setGeometry(1350,200, 400,700)
-oyna.setStyleSheet("background-color:#303670;")
+win = Window()
+win.show()
+app.exec_()
 
-label1 = QLabel(oyna)
-label1.setText("Qani boshladik")
-label1.move(100, 20)
-label1.setStyleSheet("font-size:30px; color:#ffffff;")
 
-inpt = QLineEdit(oyna)
-inpt.setGeometry(50,100, 300, 50)
-inpt.setStyleSheet(input_style)
-inpt.setPlaceholderText("Davlat nomini kiriting...")
 
-label2 = QLabel(oyna)
-label2.setFixedWidth(150)
-label2.move(80, 180)
-label2.setStyleSheet("font-size:30px; color:#ffffff;")
 
-def func_btn1():
-    capitals = {
-        "O'zbekiston": "Toshkent",
-        "Rossiya": "Moskva",
-        "Qozog'iston": "Astana",
-        "Angliya":"London",
-        "Ispaniya": "Madrid",
-        "Italiya": "Rim",
-        "Germaniya": "Berlin",
-        "Fransiya": "Parij",
-        "Turkiya": "Anqara",
-        "Misr": "Qohira",
-        "Yaponiya": "Tokio"
-    }
-    text = inpt.text()
-    if text in capitals:
-        n = capitals[text]
-        label2.setText(n)
-    else:
-        print("Ma'lumot topilmadi🤔")
+
+# oyna = QWidget()
+# oyna.setWindowTitle("Mening birinchi dasturim")
+# oyna.setGeometry(1350,200, 400,700)
+# oyna.setStyleSheet("background-color:#303670;")
+
+# label1 = QLabel(oyna)
+# label1.setText("Qani boshladik")
+# label1.move(100, 20)
+# label1.setStyleSheet("font-size:30px; color:#ffffff;")
+
+# inpt = QLineEdit(oyna)
+# inpt.setGeometry(50,100, 300, 50)
+# inpt.setStyleSheet(input_style)
+# inpt.setPlaceholderText("Davlat nomini kiriting...")
+
+# label2 = QLabel(oyna)
+# label2.setFixedWidth(150)
+# label2.move(80, 180)
+# label2.setStyleSheet("font-size:30px; color:#ffffff;")
+
+# def func_btn1():
+#     capitals = {
+#         "O'zbekiston": "Toshkent",
+#         "Rossiya": "Moskva",
+#         "Qozog'iston": "Astana",
+#         "Angliya":"London",
+#         "Ispaniya": "Madrid",
+#         "Italiya": "Rim",
+#         "Germaniya": "Berlin",
+#         "Fransiya": "Parij",
+#         "Turkiya": "Anqara",
+#         "Misr": "Qohira",
+#         "Yaponiya": "Tokio"
+#     }
+#     text = inpt.text()
+#     if text in capitals:
+#         n = capitals[text]
+#         label2.setText(n)
+#     else:
+#         print("Ma'lumot topilmadi🤔")
 
     
-btn1 = QPushButton(oyna)
-btn1.setText("🔍Search")
-btn1.setStyleSheet(btn_style)
-btn1.setGeometry(115,325, 170, 50)
-btn1.clicked.connect(func_btn1)
+# btn1 = QPushButton(oyna)
+# btn1.setText("🔍Search")
+# btn1.setStyleSheet(btn_style)
+# btn1.setGeometry(115,325, 170, 50)
+# btn1.clicked.connect(func_btn1)
 
 
-oyna.show()
-app.exec_()
+# oyna.show()
+# app.exec_()
