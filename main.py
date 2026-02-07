@@ -3,7 +3,7 @@ os.system("cls")
 import random as rd
 from PyQt5.QtWidgets import ( 
     QApplication, QWidget, QLabel,
-    QPushButton, QLineEdit,QComboBox,QCheckBox,QRadioButton,
+    QPushButton, QLineEdit,QComboBox,QCheckBox,QRadioButton,QMessageBox,
     QVBoxLayout, QHBoxLayout
 )
 
@@ -42,6 +42,15 @@ checkbox_style = """
     font-size:15px;
 """
 
+
+message_style = """
+    QMessageBox {
+        background-color:white;
+        color:black;
+        font-size:20px;
+    }
+"""
+
 class Window(QWidget):
     def __init__(self):
         super().__init__()
@@ -69,8 +78,9 @@ class Window(QWidget):
         self.vbox.addWidget(self.label4)
         self.set_radio()
 
-        self.btn1 = QPushButton("Tugma 1")
+        self.btn1 = QPushButton("Buyurtma qilish")
         self.btn1.setStyleSheet(btn_style)
+        self.btn1.clicked.connect(self.show_message)
         self.vbox.addWidget(self.btn1)
         self.vbox.addSpacing(30)
 
@@ -127,11 +137,12 @@ class Window(QWidget):
             res += f"{self.check5.text()} "
         
         self.label3.setText(f"Tanlangan ichimliklar: {res}")
-
+        return res
 
     def set_radio(self):
         self.r1 = QRadioButton("Naqd")
         self.r1.setStyleSheet(checkbox_style)
+        # self.r1.setChecked(True)
         self.r2 = QRadioButton("Karta")
         self.r2.setStyleSheet(checkbox_style)
         self.r3 = QRadioButton("Onlayn")
@@ -141,6 +152,23 @@ class Window(QWidget):
         self.vbox.addWidget(self.r2)
         self.vbox.addWidget(self.r3)
       
+    def radio_func(self):
+        if self.r1.isChecked():
+            return self.r1.text()
+        elif self.r2.isChecked():
+            return self.r2.text()
+        else:
+            return self.r3.text()
+
+    def show_message(self):
+        res = ""
+        res += f"Ovqat: {self.combo.currentText()}\n"
+        res += f"Ichimliklar: {self.checkbox_func()}\n"
+        res += f"To'lov turi: {self.radio_func()}"
+        box = QMessageBox()
+        box.setStyleSheet(message_style)
+        box.setText(res)
+        box.exec_()
 app = QApplication([])
 win = Window()
 win.show()
