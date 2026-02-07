@@ -3,7 +3,7 @@ os.system("cls")
 import random as rd
 from PyQt5.QtWidgets import ( 
     QApplication, QWidget, QLabel,
-    QPushButton, QLineEdit,QComboBox,
+    QPushButton, QLineEdit,QComboBox,QCheckBox,
     QVBoxLayout, QHBoxLayout
 )
 
@@ -37,6 +37,11 @@ label2_style = """
     color: white;
 """
 
+checkbox_style = """
+    color:white;
+    font-size:15px;
+"""
+
 class Window(QWidget):
     def __init__(self):
         super().__init__()
@@ -54,6 +59,11 @@ class Window(QWidget):
         self.label2.setStyleSheet(label2_style)
         self.vbox.addWidget(self.label2)
 
+        self.set_checkbox()
+        self.label3 = QLabel("Tanlangan ichimliklar: ")
+        self.label3.setStyleSheet(label2_style)
+        self.vbox.addWidget(self.label3)
+
         self.btn1 = QPushButton("Tugma 1")
         self.btn1.setStyleSheet(btn_style)
         self.vbox.addWidget(self.btn1)
@@ -68,22 +78,54 @@ class Window(QWidget):
         # self.combo.addItem("Mastava")
         # self.combo.addItem("Sho'rva")
         # self.combo.addItem("Lag'mon")
-
         self.combo.addItems(["Osh", "Shashlik", "Mastava","Sho'rva", "Lag'mon"])
-
         self.combo.setStyleSheet(combo_style)
         self.combo.currentTextChanged.connect(self.combo_changed)
-
         self.vbox.addWidget(self.combo)
     def combo_changed(self):
         text = self.combo.currentText()
         self.label2.setText(f"Tanlangan ovqat: {text}")
 
+    def set_checkbox(self):
+        self.check1 = QCheckBox("Qora choy")
+        self.check1.setStyleSheet(checkbox_style)
+        self.check1.stateChanged.connect(self.checkbox_func)
+        self.check2 = QCheckBox("Ko'k choy")
+        self.check2.setStyleSheet(checkbox_style)
+        self.check2.stateChanged.connect(self.checkbox_func)
+        self.check3 = QCheckBox("Coffee")
+        self.check3.setStyleSheet(checkbox_style)
+        self.check3.stateChanged.connect(self.checkbox_func)
+        self.check4 = QCheckBox("Suv")
+        self.check4.setStyleSheet(checkbox_style)
+        self.check4.stateChanged.connect(self.checkbox_func)
+        self.check5 = QCheckBox("Kokteyl")
+        self.check5.setStyleSheet(checkbox_style)
+        self.check5.stateChanged.connect(self.checkbox_func)
+
+        self.vbox.addWidget(self.check1)
+        self.vbox.addWidget(self.check2)
+        self.vbox.addWidget(self.check3)
+        self.vbox.addWidget(self.check4)
+        self.vbox.addWidget(self.check5)
+
+    def checkbox_func(self):
+        res = ""
+        if self.check1.isChecked():
+            res += f"{self.check1.text()}, "
+        if self.check2.isChecked():
+            res += f"{self.check2.text()}, "
+        if self.check3.isChecked():
+            res += f"{self.check3.text()}, "
+        if self.check4.isChecked():
+            res += f"{self.check4.text()}, "
+        if self.check5.isChecked():
+            res += f"{self.check5.text()} "
         
+        self.label3.setText(f"Tanlangan ichimliklar: {res}")
 
-
+        
 app = QApplication([])
-
 win = Window()
 win.show()
 app.exec_()
