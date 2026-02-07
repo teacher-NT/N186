@@ -3,7 +3,7 @@ os.system("cls")
 import random as rd
 from PyQt5.QtWidgets import ( 
     QApplication, QWidget, QLabel,
-    QPushButton, QLineEdit,QComboBox,QCheckBox,
+    QPushButton, QLineEdit,QComboBox,QCheckBox,QRadioButton,
     QVBoxLayout, QHBoxLayout
 )
 
@@ -64,6 +64,11 @@ class Window(QWidget):
         self.label3.setStyleSheet(label2_style)
         self.vbox.addWidget(self.label3)
 
+        self.label4 = QLabel("To'lov turi:")
+        self.label4.setStyleSheet(label2_style)
+        self.vbox.addWidget(self.label4)
+        self.set_radio()
+
         self.btn1 = QPushButton("Tugma 1")
         self.btn1.setStyleSheet(btn_style)
         self.vbox.addWidget(self.btn1)
@@ -78,7 +83,7 @@ class Window(QWidget):
         # self.combo.addItem("Mastava")
         # self.combo.addItem("Sho'rva")
         # self.combo.addItem("Lag'mon")
-        self.combo.addItems(["Osh", "Shashlik", "Mastava","Sho'rva", "Lag'mon"])
+        self.combo.addItems(["Ovqatlar", "Osh", "Shashlik", "Mastava","Sho'rva", "Lag'mon"])
         self.combo.setStyleSheet(combo_style)
         self.combo.currentTextChanged.connect(self.combo_changed)
         self.vbox.addWidget(self.combo)
@@ -108,7 +113,6 @@ class Window(QWidget):
         self.vbox.addWidget(self.check3)
         self.vbox.addWidget(self.check4)
         self.vbox.addWidget(self.check5)
-
     def checkbox_func(self):
         res = ""
         if self.check1.isChecked():
@@ -124,7 +128,19 @@ class Window(QWidget):
         
         self.label3.setText(f"Tanlangan ichimliklar: {res}")
 
-        
+
+    def set_radio(self):
+        self.r1 = QRadioButton("Naqd")
+        self.r1.setStyleSheet(checkbox_style)
+        self.r2 = QRadioButton("Karta")
+        self.r2.setStyleSheet(checkbox_style)
+        self.r3 = QRadioButton("Onlayn")
+        self.r3.setStyleSheet(checkbox_style)
+
+        self.vbox.addWidget(self.r1)
+        self.vbox.addWidget(self.r2)
+        self.vbox.addWidget(self.r3)
+      
 app = QApplication([])
 win = Window()
 win.show()
