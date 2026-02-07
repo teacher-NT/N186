@@ -3,7 +3,8 @@ os.system("cls")
 import random as rd
 from PyQt5.QtWidgets import ( 
     QApplication, QWidget, QLabel,
-    QPushButton, QLineEdit
+    QPushButton, QLineEdit,
+    QVBoxLayout, QHBoxLayout
 )
 
 btn_style = """
@@ -23,53 +24,45 @@ input_style = """
 class Window(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Poytaxlarni topish")
+        self.setWindowTitle("My App")
         self.setGeometry(1350,200,400,700)
         self.setStyleSheet("background-color:#303670;")
+        self.vbox = QHBoxLayout()
+        
 
-        self.label1 = QLabel(self)
-        self.label1.setText("Qani boshladik")
-        self.label1.move(100, 20)
-        self.label1.setStyleSheet("font-size:30px; color:#ffffff;")
-
-        self.inpt = QLineEdit(self)
-        self.inpt.setGeometry(50,100, 300, 50)
-        self.inpt.setStyleSheet(input_style)
-        self.inpt.setPlaceholderText("Davlat nomini kiriting...")
-
-        self.label2 = QLabel(self)
-        self.label2.setFixedWidth(150)
-        self.label2.move(80, 180)
-        self.label2.setStyleSheet("font-size:30px; color:#ffffff;")
-
-        self.btn1 = QPushButton(self)
-        self.btn1.setText("🔍Search")
+        self.btn1 = QPushButton()
+        self.btn1.setText("Tugma 1")
         self.btn1.setStyleSheet(btn_style)
-        self.btn1.setGeometry(115,325, 170, 50)
-        self.btn1.clicked.connect(self.func_btn1)
+        self.vbox.addWidget(self.btn1)
+        self.vbox.addSpacing(30)
 
-    
-    def func_btn1(self):
-        capitals = {
-            "O'zbekiston": "Toshkent",
-            "Rossiya": "Moskva",
-            "Qozog'iston": "Astana",
-            "Angliya":"London",
-            "Ispaniya": "Madrid",
-            "Italiya": "Rim",
-            "Germaniya": "Berlin",
-            "Fransiya": "Parij",
-            "Turkiya": "Anqara",
-            "Misr": "Qohira",
-            "Yaponiya": "Tokio"
-        }
-        text = self.inpt.text()
-        if text in capitals:
-            n = capitals[text]
-            self.label2.setText(n)
-        else:
-            print("Ma'lumot topilmadi🤔")
 
+        self.btn2 = QPushButton()
+        self.btn2.setText("Tugma 2")
+        self.btn2.setStyleSheet(btn_style)
+        self.vbox.addWidget(self.btn2)
+        self.vbox.addSpacing(30)
+
+        self.btn3 = QPushButton()
+        self.btn3.setText("Tugma 3")
+        self.btn3.setStyleSheet(btn_style)
+        self.vbox.addWidget(self.btn3)
+        self.vbox.addSpacing(30)
+
+        self.btn4 = QPushButton()
+        self.btn4.setText("Tugma 4")
+        self.btn4.setStyleSheet(btn_style)
+        self.vbox.addWidget(self.btn4)
+        self.vbox.addSpacing(30)
+
+        self.btn5 = QPushButton()
+        self.btn5.setText("Tugma 5")
+        self.btn5.setStyleSheet(btn_style)
+        self.vbox.addWidget(self.btn5)
+        
+        self.setLayout(self.vbox)
+
+        
 
 
 app = QApplication([])
@@ -77,59 +70,3 @@ app = QApplication([])
 win = Window()
 win.show()
 app.exec_()
-
-
-
-
-
-# oyna = QWidget()
-# oyna.setWindowTitle("Mening birinchi dasturim")
-# oyna.setGeometry(1350,200, 400,700)
-# oyna.setStyleSheet("background-color:#303670;")
-
-# label1 = QLabel(oyna)
-# label1.setText("Qani boshladik")
-# label1.move(100, 20)
-# label1.setStyleSheet("font-size:30px; color:#ffffff;")
-
-# inpt = QLineEdit(oyna)
-# inpt.setGeometry(50,100, 300, 50)
-# inpt.setStyleSheet(input_style)
-# inpt.setPlaceholderText("Davlat nomini kiriting...")
-
-# label2 = QLabel(oyna)
-# label2.setFixedWidth(150)
-# label2.move(80, 180)
-# label2.setStyleSheet("font-size:30px; color:#ffffff;")
-
-# def func_btn1():
-#     capitals = {
-#         "O'zbekiston": "Toshkent",
-#         "Rossiya": "Moskva",
-#         "Qozog'iston": "Astana",
-#         "Angliya":"London",
-#         "Ispaniya": "Madrid",
-#         "Italiya": "Rim",
-#         "Germaniya": "Berlin",
-#         "Fransiya": "Parij",
-#         "Turkiya": "Anqara",
-#         "Misr": "Qohira",
-#         "Yaponiya": "Tokio"
-#     }
-#     text = inpt.text()
-#     if text in capitals:
-#         n = capitals[text]
-#         label2.setText(n)
-#     else:
-#         print("Ma'lumot topilmadi🤔")
-
-    
-# btn1 = QPushButton(oyna)
-# btn1.setText("🔍Search")
-# btn1.setStyleSheet(btn_style)
-# btn1.setGeometry(115,325, 170, 50)
-# btn1.clicked.connect(func_btn1)
-
-
-# oyna.show()
-# app.exec_()
