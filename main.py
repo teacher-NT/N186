@@ -109,6 +109,7 @@ class Window(QWidget):
         self.win2 = Contacts(self)
         self.hide()
         self.win2.show()
+        # self.win2.showFullScreen()
 
 
 app = QApplication([])
